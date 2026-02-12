@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RuralArtifacts E-Store</title>
+    <meta
+      name="description"
+      content="RuralArtifacts E-Store: discover handcrafted rural artifacts with a premium, modern storefront and admin-ready product management prototype."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-texture" aria-hidden="true"></div>
+
+    <header class="site-header" role="banner">
+      <div class="container nav-wrap">
+        <a href="#" class="brand" aria-label="RuralArtifacts home">RuralArtifacts</a>
+
+        <nav aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="#storefront">Store</a></li>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#visit">Visit</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <span id="roleBadge" class="role-badge" aria-live="polite">Shopper Mode</span>
+          <button id="roleSwitchBtn" class="btn btn-outline tiny">Admin Login</button>
+          <button id="cartToggle" class="cart-chip" aria-label="Open cart">
+            Cart <span id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">CRAFTED IN INDIA • SUSTAINABLE • HANDMADE</p>
+            <h1 id="heroTitle">Rural Artifacts with Contemporary Soul</h1>
+            <p>
+              A premium e-commerce experience for pottery, handloom, woodwork, and metal crafts.
+              Built with dynamic product management, rich media handling, and location discovery.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#storefront">Shop Collection</a>
+              <a class="btn btn-outline" href="#onboarding">Choose Mode</a>
+            </div>
+            <div class="hero-metrics" aria-label="Business metrics">
+              <article><h3>120+</h3><p>Curated Artifacts</p></article>
+              <article><h3>65</h3><p>Partner Artisans</p></article>
+              <article><h3>4.9/5</h3><p>Craft Quality Score</p></article>
+            </div>
+          </div>
+
+          <aside class="hero-showcase" aria-label="Featured spotlight">
+            <img
+              src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1200&q=80"
+              alt="Rustic handcrafted artifacts arranged in a warm studio"
+            />
+            <div class="floating-note">
+              <strong>Featured Drop</strong>
+              <p>Heritage Pottery Series • New Arrival</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="onboarding" class="section section-soft">
+        <div class="container">
+          <div class="section-head">
+            <h2>User Onboarding</h2>
+            <p>Choose shopper mode to browse items, or admin mode to update the catalogue.</p>
+          </div>
+
+          <div class="onboarding-grid">
+            <article class="onboarding-card">
+              <h3>Shopper</h3>
+              <p>Browse products, search, filter, view details, and manage your cart.</p>
+              <button id="continueShopper" class="btn btn-primary">Continue as Shopper</button>
+            </article>
+
+            <article class="onboarding-card">
+              <h3>Admin</h3>
+              <p>Only admins can create, edit, or delete catalogue items.</p>
+              <form id="adminLoginForm" class="admin-login-form">
+                <label>
+                  Admin Passcode
+                  <input id="adminPasscode" type="password" placeholder="Enter admin passcode" required />
+                </label>
+                <button type="submit" class="btn btn-outline">Login as Admin</button>
+                <p id="adminLoginMsg" class="muted" aria-live="polite"></p>
+              </form>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="collections" class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Curated Collections</h2>
+            <p>Browse by craft tradition and discover artisan stories.</p>
+          </div>
+          <div id="categoryChips" class="category-chips" aria-label="Category quick filter"></div>
+        </div>
+      </section>
+
+      <section id="storefront" class="section section-soft">
+        <div class="container">
+          <div class="section-head with-tools">
+            <div>
+              <h2>Storefront</h2>
+              <p>Search, filter, compare, and view product details with image gallery support.</p>
+            </div>
+            <div class="layout-switch" role="group" aria-label="Switch layout">
+              <button class="layout-btn active" data-layout="grid">Grid</button>
+              <button class="layout-btn" data-layout="list">List</button>
+            </div>
+          </div>
+
+          <div class="filters" aria-label="Product filters">
+            <label>
+              Search
+              <input id="searchInput" type="search" placeholder="Search by artifact or artisan" />
+            </label>
+            <label>
+              Category
+              <select id="categoryFilter">
+                <option value="all">All categories</option>
+              </select>
+            </label>
+            <label>
+              Price Range
+              <select id="priceFilter">
+                <option value="all">All prices</option>
+                <option value="0-1000">₹0 - ₹1,000</option>
+                <option value="1000-3000">₹1,000 - ₹3,000</option>
+                <option value="3000-999999">₹3,000+</option>
+              </select>
+            </label>
+            <label>
+              Sort
+              <select id="sortFilter">
+                <option value="popularity">Most Popular</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="skeletons" class="skeleton-wrap" aria-hidden="true"></div>
+          <div id="productList" class="products grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="adminSection" class="section hidden" aria-hidden="true">
+        <div class="container">
+          <div class="section-head">
+            <h2>Admin Product Studio</h2>
+            <p>
+              Only visible in admin mode. Manage product CRUD, media upload/compression, stock,
+              featured/new badges, and artisan details.
+            </p>
+          </div>
+
+          <div id="statsGrid" class="stats-grid"></div>
+
+          <form id="productForm" class="admin-form" aria-label="Add or edit product">
+            <input type="hidden" id="productId" />
+
+            <label>
+              Artifact Name
+              <input id="name" required />
+            </label>
+
+            <label>
+              Category
+              <select id="category" required></select>
+            </label>
+
+            <label>
+              Price (₹)
+              <input id="price" type="number" min="1" required />
+            </label>
+
+            <label>
+              Stock Status
+              <select id="stock" required>
+                <option value="In Stock">In Stock</option>
+                <option value="Limited">Limited</option>
+                <option value="Out of Stock">Out of Stock</option>
+              </select>
+            </label>
+
+            <label class="wide">
+              Description (WYSIWYG-ready field placeholder)
+              <textarea id="description" rows="4" required></textarea>
+            </label>
+
+            <label>
+              Artisan / Craft Details (optional)
+              <input id="artisan" placeholder="Example: Crafted by Meera Devi, Jaipur" />
+            </label>
+
+            <label>
+              Alt Text (SEO)
+              <input id="altText" placeholder="Describe product image for SEO/accessibility" />
+            </label>
+
+            <label class="wide">
+              Product Images (multiple)
+              <input id="images" type="file" accept="image/*" multiple />
+            </label>
+
+            <div class="admin-row wide">
+              <label><input id="featured" type="checkbox" /> Featured</label>
+              <label><input id="newArrival" type="checkbox" /> New Arrival</label>
+            </div>
+
+            <div id="imagePreview" class="preview wide"></div>
+
+            <div class="admin-row wide">
+              <button type="submit" class="btn btn-primary">Save Product</button>
+              <button id="cancelEdit" type="button" class="btn btn-outline">Cancel</button>
+            </div>
+          </form>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Flags</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminProductRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="visit" class="section section-soft">
+        <div class="container location-grid">
+          <div>
+            <h2>Visit Our Studio</h2>
+            <p><strong>RuralArtifacts Studio</strong><br />42 Heritage Lane, Craft Village, Jaipur</p>
+            <p>
+              <strong>Hours:</strong> Mon-Sat • 10:00 AM - 7:00 PM<br />
+              <strong>Phone:</strong> +91-98765-12345<br />
+              <strong>Email:</strong> hello@ruralartifacts.in
+            </p>
+            <a
+              class="btn btn-outline"
+              href="https://www.google.com/maps/dir/?api=1&destination=Jaipur"
+              target="_blank"
+              rel="noopener"
+              >Get Directions</a
+            >
+          </div>
+          <iframe
+            title="RuralArtifacts store location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Jaipur%2C%20Rajasthan&output=embed"
+          ></iframe>
+        </div>
+      </section>
+    </main>
+
+    <aside id="cartPanel" class="cart-panel" aria-label="Shopping cart" aria-hidden="true">
+      <div class="cart-head">
+        <h3>Your Cart</h3>
+        <button id="closeCart" class="btn btn-outline tiny">Close</button>
+      </div>
+      <div id="cartItems"></div>
+      <div class="cart-footer">
+        <p>Total: <strong id="cartTotal">₹0</strong></p>
+        <button class="btn btn-primary" disabled title="Payment integration in future phase">
+          Checkout (Payment Ready)
+        </button>
+      </div>
+    </aside>
+
+    <dialog id="productDialog">
+      <article class="dialog-content">
+        <button id="closeDialog" class="btn btn-outline tiny">Close</button>
+        <div class="dialog-grid">
+          <div>
+            <img id="dialogMainImage" alt="" />
+            <div id="dialogThumbs" class="thumbs"></div>
+          </div>
+          <div>
+            <h3 id="dialogTitle"></h3>
+            <p id="dialogPrice" class="price"></p>
+            <p id="dialogDescription"></p>
+            <p id="dialogArtisan" class="muted"></p>
+            <button id="dialogAddToCart" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
